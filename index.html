@@ -41,8 +41,27 @@
   }
 </style>
 
-<button></button>
+<button>btn</button>
 <script>
+const divs = document.querySelectorAll('div');
+const button = document.querySelector('button');
+
+function logText(e){
+    console.log(this.classList.value)
+    e.stopPropagation() //to stop bubbling(click on middle and stop the ripple effect 3,2,1 somthing like that)
+}
+
+// document.body.addEventListener('click',logText)
+
+divs.forEach(click => click.addEventListener('click', logText,{
+    capture: false
+}))
+
+button.addEventListener('click', ()=>{
+    console.log("Clicked!");
+},{
+    once: true //this helps to make button click happens "once" when checkout in a website.s
+})
 
 </script>
 </body>
