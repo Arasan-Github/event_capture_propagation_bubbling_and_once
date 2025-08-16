@@ -1,68 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Understanding JavaScript's Capture</title>
-  <link rel="icon" href="https://fav.farm/🔥" />
-</head>
-<body class="bod">
-
-  <div class="one">
-    <div class="two">
-      <div class="three">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Understanding JavaScript's Capture</title>
+    <link rel="icon" href="https://fav.farm/🔥" />
+  </head>
+  <body class="bod">
+    <div class="one">
+      <div class="two">
+        <div class="three"></div>
       </div>
     </div>
-  </div>
 
-<style>
-  html {
-    box-sizing: border-box;
-  }
+    <style>
+      html {
+        box-sizing: border-box;
+      }
 
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
 
-  div {
-    width: 100%;
-    padding: 100px;
-  }
+      div {
+        width: 100%;
+        padding: 100px;
+      }
 
-  .one {
-    background: thistle;
-  }
+      .one {
+        background: thistle;
+      }
 
-  .two {
-    background: mistyrose;
-  }
+      .two {
+        background: mistyrose;
+      }
 
-  .three {
-    background: coral;
-  }
-</style>
+      .three {
+        background: coral;
+      }
+    </style>
 
-<button>btn</button>
-<script>
-const divs = document.querySelectorAll('div');
-const button = document.querySelector('button');
+    <button>btn</button>
+    <script>
+      const divs = document.querySelectorAll("div");
+      const button = document.querySelector("button");
 
-function logText(e){
-    console.log(this.classList.value)
-    e.stopPropagation() //to stop bubbling(click on middle and stop the ripple effect 3,2,1 somthing like that)
-}
+      function logText(e) {
+        console.log(this.classList.value);
+        e.stopPropagation(); //to stop bubbling(click on middle and stop the ripple effect 3,2,1 somthing like that)
+      }
 
-// document.body.addEventListener('click',logText)
+      // document.body.addEventListener('click',logText)
 
-divs.forEach(click => click.addEventListener('click', logText,{
-    capture: false
-}))
+      divs.forEach((click) =>
+        click.addEventListener("click", logText, {
+          capture: false,
+        })
+      );
 
-button.addEventListener('click', ()=>{
-    console.log("Clicked!");
-},{
-    once: true //this helps to make button click happens "once" when checkout in a website.s
-})
-
-</script>
-</body>
+      button.addEventListener(
+        "click",
+        () => {
+          console.log("Clicked!");
+        },
+        {
+          once: true, //this helps to make button click happens "once" when checkout in a website.s
+        }
+      );
+    </script>
+  </body>
 </html>
